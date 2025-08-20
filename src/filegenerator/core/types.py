@@ -3,16 +3,44 @@ from pydantic import BaseModel, EmailStr
 class FileTypes(BaseModel):
     name: str
     description: str
-    extension: str
+    convention: str
+    settings: str
 
-available_file_types = [
-    FileTypes(name="auto_debit", description="AutoDebit Bulk File", extension="adb.csv"),
-    FileTypes(name="consent", description="Consent Bulk File", extension="consent.csv"),
-    FileTypes(name="invoice", description="Invoice Template", extension="invoice.xlsx"),
-    FileTypes(name="report", description="Monthly Report", extension="report.pdf"),    
-]
+class SettingTypes(BaseModel):
+    type: str
+    settings: str
+    command: str
 
 class User(BaseModel):
     id: int
     name: str
     email: EmailStr
+
+available_file_types = [
+    FileTypes(
+        name="default", 
+        settings="filegen v <Setting Files>", 
+        description="Custom File", 
+        convention="<Custom>.<FileExtension>"
+        ),
+    FileTypes(
+        name="auto_debit", 
+        settings="filegen v <Setting Files>", 
+        description="AutoDebit Bulk File", 
+        convention="<Unique ID>_<Prefix>_<YYYYMMDD>_<RunningNo>.<FileExtension>"
+        ),
+    FileTypes(
+        name="consent", 
+        settings="filegen v <Setting Files>", 
+        description="Consent Bulk File", 
+        convention="CRB_<Unique ID>_<YYYYMMDD>_<RunningNo>.<FileExtension>"
+        ), 
+]
+
+available_settings = [
+    SettingTypes(
+        type="Custom Setting",
+        settings="<Number of columns> etc.",
+        command="filegen v -d"
+    )
+]

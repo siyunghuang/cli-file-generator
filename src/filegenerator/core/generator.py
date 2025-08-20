@@ -2,6 +2,7 @@ from pathlib import Path
 
 import typer
 import pandas as pd
+from rich.progress import track
 
 from pydantic import ValidationError
 from filegenerator.core.types import User
@@ -35,15 +36,18 @@ def generate_csv():
     df = pd.read_csv(csv_path)
     users = []
 
-    for i, row in df.iterrows():
-        try:
-            user = User(**row.to_dict())
-            users.append(user)
-        except ValidationError as e:
-            print(f"Row (i) is invalid: {e}")
+    for value in track(range(100), description="Generating..."):
+        for i, row in df.iterrows():
+            try:
+                user = User(**row.to_dict())
+                users.append(user)
+            except ValidationError as e:
+                print(f"Row (i) is invalid: {e}")
 
-    validated_df = pd.DataFrame([u.dict() for u in users])
-    validated_df.to_csv("validated_users.csv", index=False)
+        validated_df = pd.DataFrame([u.dict() for u in users])
+        validated_df.to_csv("validated_users.csv", index=False)
+
+    typer.echo(f"✅ Csv File created successfully.")
 
 def generate_excel():
 

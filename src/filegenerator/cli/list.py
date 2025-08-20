@@ -17,10 +17,28 @@ def list_file_types():
 
     table.add_column("Type", style="cyan", no_wrap=True)
     table.add_column("Description", style="green")
-    table.add_column("Extension", style="magenta")
+    table.add_column("Setting", style="blue" )
+    table.add_column("Convention", style="magenta")
 
     for file_type in available_file_types:
-        table.add_row(file_type.name, file_type.description, file_type.extension)
+        table.add_row(file_type.name, file_type.description, file_type.settings, file_type.convention)
+
+    panel = Panel.fit(table, title="📁 File Generator", subtitle="Use 'filegen file cat --format TYPE'", border_style="blue")
+    console.print(panel)
+
+@app.command("v")
+def view_file_settings():
+    """
+    To view customized file settings
+    """
+
+    table = Table(title="Configured Settings")
+    table.add_column("Type", style="cyan", no_wrap=True)
+    table.add_column("Settings", style="green")
+    table.add_column("Command", style="magenta")
+
+    for file_type in available_settings:
+        table.add_row(file_type.type, file_type.settings, file_type.command)
 
     panel = Panel.fit(table, title="📁 File Generator", subtitle="Use 'filegen file cat --format TYPE'", border_style="blue")
     console.print(panel)
