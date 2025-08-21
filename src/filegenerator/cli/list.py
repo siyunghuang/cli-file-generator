@@ -1,7 +1,7 @@
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
-from filegenerator.core.types import available_file_types
+from filegenerator.core.types import available_file_types, available_settings
 import typer
 
 app = typer.Typer(help="Commands related to available file types for generation")
@@ -35,7 +35,8 @@ def view_file_settings():
     table = Table(title="Configured Settings")
     table.add_column("Type", style="cyan", no_wrap=True)
     table.add_column("Settings", style="green")
-    table.add_column("Command", style="magenta")
+    table.add_column("Data Type", style="blue")
+    table.add_column("Format", style="blue")
 
     for file_type in available_settings:
         table.add_row(file_type.type, file_type.settings, file_type.command)

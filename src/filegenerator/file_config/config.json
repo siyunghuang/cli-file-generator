@@ -1,0 +1,24 @@
+{
+    "report": {
+        "output_filename": "generate_report.txt",
+        "title": "Monthly Sales Report",
+        "author": "test",
+        "include_header": true,
+        "sections": [
+            "Introduction",
+            "Sales Data",
+            "Conclusion"
+        ]
+    },
+    "document": {
+        "output_filename": "generated_document.md",
+        "title": "Project Documentation",
+        "author": "Dev Team",
+        "include_header": false,
+        "sections": [
+            "Overview",
+            "Installation",
+            "Usage"
+        ]
+    }
+}
