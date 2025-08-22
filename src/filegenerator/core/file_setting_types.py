@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, RootModel
 from typing import Dict, Literal, Optional
 
 class ColumnConfig(BaseModel):
@@ -9,7 +9,7 @@ class ColumnConfig(BaseModel):
 class ProfileConfig(BaseModel):
     output_filename: str
     format: Literal["csv", "excel", "json"]
-    columns: Dict[str, ColumnConfig]
+    columns: list[Dict[str, ColumnConfig]]
 
 class ConfigModel(BaseModel):
-    __root__: Dict[str, ProfileConfig]
+    profiles: list[Dict[str, ProfileConfig]]

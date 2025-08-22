@@ -1,29 +1,10 @@
 {
-    "profileA": {
-        "output_filename": "Default",
-        "format": "csv",
-        "columns": [
-            {
-                "columnA": {
-                    "data_type": "str",
-                    "data_size": "",
-                    "randomize": "False"
-                }
-            },
-            {
-                "columnB": {
-                    "data_type": "str",
-                    "data_size": "",
-                    "randomize": "True"
-                }
-            },
-            {
-                "columnC": {
-                    "data_type": "int",
-                    "data_size": "",
-                    "randomize": "True"
-                }
-            }
-        ]
-    }
+    "profiles":[
+        {
+            "profileA": {"output_filename": "Default", "format": "csv", "columns": [
+            {"columnA": {"data_type": "str", "data_size": "", "randomize": "False"}},
+            {"columnB": {"data_type": "str", "data_size": "","randomize": "True"}},
+            {"columnC": {"data_type": "int", "data_size": "", "randomize": "True"}}]}
+        }
+    ]
 }

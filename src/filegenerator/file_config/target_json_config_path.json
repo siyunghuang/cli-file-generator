@@ -1,0 +1,33 @@
+{
+ "profiles": [
+  {
+   "profileA": {
+    "output_filename": "Default",
+    "format": "txt",
+    "columns": [
+     {
+      "columnA": {
+       "data_type": "str",
+       "data_size": "",
+       "randomize": false
+      }
+     },
+     {
+      "columnB": {
+       "data_type": "str",
+       "data_size": "",
+       "randomize": true
+      }
+     },
+     {
+      "columnC": {
+       "data_type": "int",
+       "data_size": "",
+       "randomize": true
+      }
+     }
+    ]
+   }
+  }
+ ]
+}
